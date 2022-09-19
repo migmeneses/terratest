@@ -1,37 +1,48 @@
-# Terratest
+# Terraform AWS Example
 
-[![Maintained by Gruntwork.io](https://img.shields.io/badge/maintained%20by-gruntwork.io-%235849a6.svg)](https://gruntwork.io/?ref=repo_terratest)
-[![CircleCI](https://circleci.com/gh/gruntwork-io/terratest.svg?style=svg&circle-token=e48019e09fc3b8bf6e0315a84048501c87c4157c)](https://circleci.com/gh/gruntwork-io/terratest)
-[![Go Report Card](https://goreportcard.com/badge/github.com/gruntwork-io/terratest)](https://goreportcard.com/report/github.com/gruntwork-io/terratest)
-[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/mod/github.com/gruntwork-io/terratest?tab=overview)
-![go.mod version](https://img.shields.io/github/go-mod/go-version/gruntwork-io/terratest)
+This folder contains a simple Terraform module that deploys resources in [AWS](https://aws.amazon.com/) to demonstrate
+how you can use Terratest to write automated tests for your AWS Terraform code. This module deploys an [EC2
+Instance](https://aws.amazon.com/ec2/) and gives that Instance a `Name` tag with the value specified in the
+`instance_name` variable.
 
-Terratest is a Go library that makes it easier to write automated tests for your infrastructure code. It provides a
-variety of helper functions and patterns for common infrastructure testing tasks, including:
+Check out [test/terraform_aws_example_test.go](/test/terraform_aws_example_test.go) to see how you can write
+automated tests for this module.
 
-- Testing Terraform code
-- Testing Packer templates
-- Testing Docker images
-- Executing commands on servers over SSH
-- Working with AWS APIs
-- Working with Azure APIs
-- Working with GCP APIs
-- Working with Kubernetes APIs
-- Testing Helm Charts
-- Making HTTP requests
-- Running shell commands
-- And much more
+Note that the EC2 Instance in this module doesn't actually do anything; it just runs a Vanilla Ubuntu 16.04 AMI for
+demonstration purposes. For slightly more complicated, real-world examples of Terraform modules, see
+[terraform-http-example](/examples/terraform-http-example) and [terraform-ssh-example](/examples/terraform-ssh-example).
 
-Please see the following for more info:
+**WARNING**: This module and the automated tests for it deploy real resources into your AWS account which can cost you
+money. The resources are all part of the [AWS Free Tier](https://aws.amazon.com/free/), so if you haven't used that up,
+it should be free, but you are completely responsible for all AWS charges.
 
-- [Terratest Website](https://terratest.gruntwork.io)
-- [Getting started with Terratest](https://terratest.gruntwork.io/docs/getting-started/quick-start/)
-- [Terratest Documentation](https://terratest.gruntwork.io/docs/)
-- [Contributing to Terratest](https://terratest.gruntwork.io/docs/community/contributing/)
-- [Commercial Support](https://gruntwork.io/support/)
 
-## License
 
-This code is released under the Apache 2.0 License. Please see [LICENSE](LICENSE) and [NOTICE](NOTICE) for more details.
 
-Copyright &copy; 2020 Gruntwork, Inc.
+
+## Running this module manually
+
+1. Sign up for [AWS](https://aws.amazon.com/).
+1. Configure your AWS credentials using one of the [supported methods for AWS CLI
+   tools](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), such as setting the
+   `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables. If you're using the `~/.aws/config` file for profiles then export `AWS_SDK_LOAD_CONFIG` as "True".
+1. Set the AWS region you want to use as the environment variable `AWS_DEFAULT_REGION`.
+1. Install [Terraform](https://www.terraform.io/) and make sure it's on your `PATH`.
+1. Run `terraform init`.
+1. Run `terraform apply`.
+1. When you're done, run `terraform destroy`.
+
+
+
+
+## Running automated tests against this module
+
+1. Sign up for [AWS](https://aws.amazon.com/).
+1. Configure your AWS credentials using one of the [supported methods for AWS CLI
+   tools](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), such as setting the
+   `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables. If you're using the `~/.aws/config` file for profiles then export `AWS_SDK_LOAD_CONFIG` as "True".
+1. Install [Terraform](https://www.terraform.io/) and make sure it's on your `PATH`.
+1. Install [Golang](https://golang.org/) and make sure this code is checked out into your `GOPATH`.
+1. `cd test`
+1. `dep ensure`
+1. `go test -v -run TestTerraformAwsExample`
