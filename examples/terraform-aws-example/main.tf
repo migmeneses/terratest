@@ -24,6 +24,15 @@ resource "aws_instance" "test-1" {
   }
 }
 
+resource "aws_instance" "test-2" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = var.instance_type
+
+  tags = {
+    Name = var.instance_name_2
+  }
+}
+
 # ---------------------------------------------------------------------------------------------------------------------
 # LOOK UP THE LATEST UBUNTU AMI
 # ---------------------------------------------------------------------------------------------------------------------
