@@ -3,9 +3,6 @@
 # Define these secrets as environment variables
 # ---------------------------------------------------------------------------------------------------------------------
 
-# AWS_ACCESS_KEY_ID
-# AWS_SECRET_ACCESS_KEY
-
 # ---------------------------------------------------------------------------------------------------------------------
 # REQUIRED PARAMETERS
 # You must provide a value for each of these parameters.
@@ -16,10 +13,10 @@
 # These parameters have reasonable defaults.
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "instance_name" {
+variable "instance_name_1" {
   description = "The Name tag to set for the EC2 Instance."
   type        = string
-  default     = "terratest-example"
+  default     = "test-instance-1"
 }
 
 variable "instance_type" {

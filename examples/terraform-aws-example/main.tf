@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {
-  # This module is now only being tested with Terraform 0.13.x. However, to make upgrading easier, we are setting
-  # 0.12.26 as the minimum version, as that version added support for required_providers with source URLs, making it
-  # forwards compatible with 0.13.x code.
-  required_version = ">= 0.12.26"
+}
+
+provider "aws" {
+  region = "ap-southeast-1"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -15,12 +15,12 @@ terraform {
 # See test/terraform_aws_example_test.go for how to write automated tests for this code.
 # ---------------------------------------------------------------------------------------------------------------------
 
-resource "aws_instance" "example" {
+resource "aws_instance" "test-1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
   tags = {
-    Name = var.instance_name
+    Name = var.instance_name_1
   }
 }
 
@@ -49,7 +49,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
 }
 
