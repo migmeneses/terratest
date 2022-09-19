@@ -19,6 +19,12 @@ variable "instance_name_1" {
   default     = "test-instance-1"
 }
 
+variable "instance_name_2" {
+  description = "The Name tag to set for the EC2 Instance."
+  type        = string
+  default     = "test-instance-2"
+}
+
 variable "instance_type" {
   description = "The EC2 instance type to run."
   type        = string
