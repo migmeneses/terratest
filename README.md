@@ -7,7 +7,7 @@ Instances](https://aws.amazon.com/ec2/).
 Check out [test/terraform_aws_example_test.go](/test/terraform_aws_example_test.go) to see how you can write
 automated tests for this module.
 
-Note that the EC2 Instance in this module doesn't actually do anything; it just runs a Vanilla Ubuntu 20.04 AMI for
+Note that the EC2 Instances in this module doesn't actually do anything; it just runs a Vanilla Ubuntu 20.04 AMI for
 demonstration purposes. For slightly more complicated, real-world examples of Terraform modules, see
 [terraform-http-example](/examples/terraform-http-example) and [terraform-ssh-example](/examples/terraform-ssh-example).
 
