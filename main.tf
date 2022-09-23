@@ -11,7 +11,7 @@ provider "aws" {
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY AN EC2 INSTANCE RUNNING UBUNTU
+# DEPLOY TWO EC2 INSTANCES RUNNING UBUNTU
 # See test/terraform_aws_example_test.go for how to write automated tests for this code.
 # ---------------------------------------------------------------------------------------------------------------------
 
