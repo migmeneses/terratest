@@ -1,8 +1,8 @@
-output "test-1_id" {
-  value = aws_instance.test-1.id
+output "test-zxc_id" {
+  value = aws_instance.test-zxc.id
 }
 
-output "test-2_id" {
-  value = aws_instance.test-2.id
+output "test-vbn_id" {
+  value = aws_instance.test-vbn.id
 }
 
